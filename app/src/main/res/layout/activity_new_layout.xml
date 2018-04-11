@@ -4,51 +4,120 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewLayout">
+    android:orientation="horizontal"
+    tools:context=".NewLayout"
+    android:background="@color/gray_light"
+    >
 
-    <View xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/bg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/accent"
-        android:visibility="invisible"
-        />
-    <View
-        android:id="@+id/bg2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:visibility="invisible"
-        />
     <android.support.v7.widget.Toolbar
         android:id="@+id/toorlbar_newLayout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/material_red_500"
+        app:titleTextColor="@color/white"
         />
-
-    <TextView
-        android:id="@+id/lorem_ipsum"
+    <android.support.v4.widget.NestedScrollView
+        android:layout_above="@id/next_nav"
+        android:layout_below="@id/toorlbar_newLayout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:textSize="16sp"
-        android:textColor="@color/primary_text"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus massa sit amet turpis iaculis, at elementum turpis hendrerit. Vivamus gravida tortor nec massa fermentum, in volutpat mi tincidunt. Maecenas aliquet mauris nisl, sed scelerisque neque pharetra eu. In hac habitasse platea dictumst. Vestibulum dignissim dictum erat. Vivamus sit amet fringilla lacus. Phasellus auctor lacus felis, et eleifend felis sodales nec. Duis dignissim magna malesuada, faucibus lectus nec, vestibulum lacus. Donec tristique varius sapien, sit amet viverra nibh bibendum et.c" />
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toorlbar_newLayout"
+            android:layout_above="@id/next_nav"
+            >
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_new_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <LinearLayout
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/recycler_new_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="20dp"
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="end"
+                    android:paddingBottom="10dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+                        <TextView
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@id/recycler_new_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sub Total"
+                            />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/next_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:transitionName="bg"
-        android:layout_marginBottom="16dp"
-        android:visibility="gone"
-        app:srcCompat="@drawable/cart_icon" />
+                        <TextView
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Service Fee"
+                            />
+                        <TextView
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Delivery Fee"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingRight="20dp"
+                        android:paddingLeft="20dp"
+                        >
+                        <TextView
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@id/recycler_new_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sub Total"
+                            />
+
+                        <TextView
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Service Fee"
+                            />
+                        <TextView
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Delivery Fee"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+                <Button
+                    android:id="@+id/checkout_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Check Out"
+                    android:textAllCaps="false"
+                    android:background="@drawable/button_cart_bg"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:textColor="@color/white"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
     <include layout="@layout/bottom_nav"
         android:transitionName="bg"
         android:id="@+id/next_nav"

@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.github.aakira.expandablelayout.Utils;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        finish();
 
     }
 
@@ -42,22 +45,22 @@ public class RecyclerViewActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         scrollView = findViewById(R.id.scrollView_recycler);
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId()==R.id.cart_nav){
-                    Intent intent = new Intent(getApplicationContext(),NewLayout.class);
+                if (item.getItemId() == R.id.cart_nav) {
+                    Intent intent = new Intent(getApplicationContext(), NewLayout.class);
                     ActivityOptions options = null;
                     options = ActivityOptions.makeSceneTransitionAnimation(
                             RecyclerViewActivity.this,
-                            android.util.Pair.create((View)bottomNavigationView,"bg"));
-                    startActivity(intent,options.toBundle());
+                            android.util.Pair.create((View) bottomNavigationView, "bg"));
+                    startActivity(intent, options.toBundle());
                 }
                 return false;
             }
         });
 
+        bottomNavigationView.setSelectedItemId(R.id.nav_home);
 
 
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -118,7 +121,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(new RecyclerViewRecyclerAdapter(data));
 
-        scrollView.getParent().requestChildFocus(scrollView,scrollView);
+        scrollView.getParent().requestChildFocus(scrollView, scrollView);
 
 
     }

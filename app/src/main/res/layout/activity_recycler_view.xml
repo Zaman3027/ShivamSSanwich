@@ -11,7 +11,7 @@
 
         android:id="@+id/scrollView_recycler"
         android:layout_marginBottom="56dp"
-        xmlns:tools="http://schemas.android.com/tools">
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"

@@ -2,12 +2,14 @@
 <LinearLayout android:orientation="horizontal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
         <LinearLayout
             android:id="@+id/image_layout_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
             <ImageView
                 android:layout_margin="5dp"
                 android:layout_width="100dp"
@@ -24,8 +26,8 @@
                 <TextView
                     android:id="@+id/foodName"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:layout_height="40dp"
+                    android:textSize="14sp"
                     android:layout_gravity="center"
                     android:text="Sandwich"
                     android:textAlignment="center"
@@ -62,14 +64,18 @@
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:visibility="gone"
+                    app:stepperBackgroundColor="@color/gray"
+                    app:stepperButtonColor="@color/accent"
+                    app:stepperTextColor="@color/white"
                     />
                 <Button
                     android:id="@+id/addtocard"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
-                    android:text="add to card"
+                    android:text="Add To Cart"
+                    android:layout_gravity="center"
                     android:textColor="@color/white"
-                    android:background="@color/material_deep_orange_A100"
+                    android:background="@drawable/button_cart_bg"
                     android:textAllCaps="false"
                     />
 

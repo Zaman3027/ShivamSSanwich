@@ -56,11 +56,14 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         Pair pairs = new Pair<View,String>(mimageView, "imageTran");
                         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
-                        if (user==null)
-                            startActivity(new Intent(getApplicationContext(),LoginActivity.class),options.toBundle());
-                        else
-                            startActivity(new Intent(getApplicationContext(),RecyclerViewActivity.class),options.toBundle());
-                        finish();
+                        if (user!=null) {
+                            startActivity(new Intent(getApplicationContext(), RecyclerViewActivity.class), options.toBundle());
+                            finish();
+                        }
+                        else {
+                            startActivity(new Intent(getApplicationContext(), LoginActivity.class), options.toBundle());
+                            finish();
+                        }
                     }
                 },2000);
             }
