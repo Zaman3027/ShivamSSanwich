@@ -4,6 +4,7 @@
     android:layout_height="fill_parent"
     android:fitsSystemWindows="true"
     android:background="@color/primary"
+    android:theme="@style/Text"
     >
 
     <LinearLayout
@@ -19,7 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="72dp"
             android:layout_marginBottom="24dp"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:transitionName="imageTran"
+            />
 
         <!--  Email Label -->
         <android.support.design.widget.TextInputLayout
@@ -28,7 +31,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             >
-            <EditText android:id="@+id/input_email"
+            <EditText
+                android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
@@ -42,7 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_password"
+            <EditText
+                android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"

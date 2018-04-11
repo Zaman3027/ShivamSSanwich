@@ -22,6 +22,11 @@ public class RecyclerViewActivity extends AppCompatActivity {
     NestedScrollView scrollView;
     FloatingActionButton fab;
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

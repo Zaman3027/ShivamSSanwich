@@ -17,8 +17,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
     ImageView mimageView;
+    FirebaseAuth mAuth;
 
 
 
@@ -29,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+
+        mAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = mAuth.getCurrentUser();
 
 
         mimageView = findViewById(R.id.logo);
@@ -49,7 +56,11 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         Pair pairs = new Pair<View,String>(mimageView, "imageTran");
                         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
-                        startActivity(new Intent(getApplicationContext(),RecyclerViewActivity.class),options.toBundle());
+                        if (user==null)
+                            startActivity(new Intent(getApplicationContext(),LoginActivity.class),options.toBundle());
+                        else
+                            startActivity(new Intent(getApplicationContext(),RecyclerViewActivity.class),options.toBundle());
+                        finish();
                     }
                 },2000);
             }
