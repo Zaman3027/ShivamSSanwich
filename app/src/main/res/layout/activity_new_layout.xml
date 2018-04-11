@@ -1,0 +1,51 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewLayout">
+
+    <View xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/accent"
+        android:visibility="invisible"
+        />
+    <View
+        android:id="@+id/bg2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="invisible"
+        />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toorlbar_newLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/material_red_500"
+        />
+
+    <TextView
+        android:id="@+id/lorem_ipsum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:textSize="16sp"
+        android:textColor="@color/primary_text"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus massa sit amet turpis iaculis, at elementum turpis hendrerit. Vivamus gravida tortor nec massa fermentum, in volutpat mi tincidunt. Maecenas aliquet mauris nisl, sed scelerisque neque pharetra eu. In hac habitasse platea dictumst. Vestibulum dignissim dictum erat. Vivamus sit amet fringilla lacus. Phasellus auctor lacus felis, et eleifend felis sodales nec. Duis dignissim magna malesuada, faucibus lectus nec, vestibulum lacus. Donec tristique varius sapien, sit amet viverra nibh bibendum et.c" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/next_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:transitionName="bg"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@drawable/cart_icon" />
+</RelativeLayout>
