@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +16,13 @@ import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class NewLayout extends AppCompatActivity {
+
+    @BindView(R.id.next_nav) BottomNavigationView bottomNavigationView;
+
     int height;
     int width;
     FloatingActionButton mFab;
@@ -30,7 +37,7 @@ public class NewLayout extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             sharedElementEnterTransition.removeListener(mTransitionListener);
-            setFab(mFab, true);
+            setFab(bottomNavigationView, true);
             toolbar.setVisibility(View.INVISIBLE);
             textView.setVisibility(View.INVISIBLE);
         } else {
@@ -45,6 +52,8 @@ public class NewLayout extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_layout);
+
+        ButterKnife.bind(this);
 
         getWindow().setEnterTransition(null);
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -62,6 +71,8 @@ public class NewLayout extends AppCompatActivity {
 
         sharedElementEnterTransition = getWindow().getSharedElementEnterTransition();
 
+        bottomNavigationView.setSelectedItemId(R.id.cart_nav);
+
 
         mTransitionListener = new Transition.TransitionListener() {
             @Override
@@ -72,7 +83,7 @@ public class NewLayout extends AppCompatActivity {
             @Override
             public void onTransitionEnd(Transition transition) {
                 setAnim(pinkView);
-                setFab(mFab, false);
+                setFab(bottomNavigationView, false);
             }
 
             @Override
@@ -220,7 +231,7 @@ public class NewLayout extends AppCompatActivity {
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     super.onAnimationEnd(animation);
-                    myView.setVisibility(View.INVISIBLE);
+                    myView.setVisibility(View.VISIBLE);
                 }
             });
         }

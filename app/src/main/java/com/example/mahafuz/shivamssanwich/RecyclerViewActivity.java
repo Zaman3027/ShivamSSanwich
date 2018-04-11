@@ -4,11 +4,14 @@ package com.example.mahafuz.shivamssanwich;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,10 +20,12 @@ import com.github.aakira.expandablelayout.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class RecyclerViewActivity extends AppCompatActivity {
     NestedScrollView scrollView;
-    FloatingActionButton fab;
 
     @Override
     public void onBackPressed() {
@@ -28,25 +33,31 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
     }
 
+    @BindView(R.id.navigation) BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
+        ButterKnife.bind(this);
 
         scrollView = findViewById(R.id.scrollView_recycler);
-        fab = findViewById(R.id.fab);
 
-        fab.setOnClickListener(new View.OnClickListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),NewLayout.class);
-                ActivityOptions options = null;
-                options = ActivityOptions.makeSceneTransitionAnimation(
-                        RecyclerViewActivity.this,
-                        android.util.Pair.create((View)fab,"bg"));
-                startActivity(intent,options.toBundle());
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId()==R.id.cart_nav){
+                    Intent intent = new Intent(getApplicationContext(),NewLayout.class);
+                    ActivityOptions options = null;
+                    options = ActivityOptions.makeSceneTransitionAnimation(
+                            RecyclerViewActivity.this,
+                            android.util.Pair.create((View)bottomNavigationView,"bg"));
+                    startActivity(intent,options.toBundle());
+                }
+                return false;
             }
         });
+
 
 
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);

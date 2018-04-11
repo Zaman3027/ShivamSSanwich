@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
 
         android:id="@+id/scrollView_recycler"
+        android:layout_marginBottom="56dp"
         xmlns:tools="http://schemas.android.com/tools">
 
         <RelativeLayout
@@ -47,14 +48,7 @@
         </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:transitionName="bg"
-        android:src="@drawable/cart_icon"
-        android:clickable="true" />
+    <include layout="@layout/bottom_nav"
+        android:id="@+id/navigation"
+        />
 </RelativeLayout>
